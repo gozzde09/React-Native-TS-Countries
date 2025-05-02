@@ -1,7 +1,9 @@
 // BOTTOM NAVBAR https://reactnavigation.org/docs/bottom-tab-navigator/
 // ICONS https://github.com/oblador/react-native-vector-icons?tab=readme-ov-file#installation
 // NAV https://reactnavigation.org/docs/nesting-navigators/#nesting-multiple-navigators
+// TABBAR https://reactnavigation.org/docs/customizing-tabbar/
 // SPLASH SCREEN : https://docs.expo.dev/versions/latest/sdk/splash-screen/
+
 import React, { useEffect, useState } from "react";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { StatusBar } from "expo-status-bar";
@@ -42,16 +44,6 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name='COUNTRIFY' component={TabNav} />
-        <Stack.Screen
-          name='Home'
-          component={Home}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name='Explore'
-          component={Explore}
-          options={{ headerShown: false }}
-        />
       </Stack.Navigator>
       <StatusBar style='auto' />
     </NavigationContainer>
@@ -77,7 +69,7 @@ function TabNav() {
               iconName = "globe";
               size = 40;
             } else if (route.name === "Add") {
-              iconName = "plus";
+              iconName = "book";
             }
             return (
               <View
@@ -118,15 +110,15 @@ function TabNav() {
 }
 const styles = StyleSheet.create({
   iconContainer: {
-    justifyContent: "center",
     alignItems: "center",
+    justifyContent: "center",
   },
   exploreIconContainer: {
-    width: 60,
-    height: 60,
-    borderRadius: 30,
-    position: "absolute",
-    bottom: 2,
     backgroundColor: "#ededed",
+    borderRadius: 30,
+    bottom: 2,
+    height: 60,
+    position: "absolute",
+    width: 60,
   },
 });

@@ -21,9 +21,7 @@ export default function HomeScreen() {
           />
         </View>
         <View style={styles.textContainer}>
-          <Text style={styles.title}>
-            Discover the Fascinating World of Countries!
-          </Text>
+          <Text style={styles.title}>Discover the Fascinating World!</Text>
           <Text style={styles.description}>
             Embark on an exciting journey around the globe and learn about the
             unique countries that shape our world. From the snowy mountains of

@@ -1,10 +1,13 @@
+// https://docs.expo.dev/versions/latest/sdk/webview/
+// https://reactnative.dev/docs/safeareaview
 import React, { useState, useEffect } from "react";
 import { SafeAreaView, View, StyleSheet, FlatList, Text } from "react-native";
 import { Card } from "react-native-paper";
 import { WebView } from "react-native-webview";
+import type { Country } from "../types";
 
 export default function Explore() {
-  const [countries, setCountries] = useState([]);
+  const [countries, setCountries] = useState<Country[]>([]);
 
   useEffect(() => {
     fetch("https://countries-mongodb-atlas.onrender.com/countries")
@@ -46,7 +49,9 @@ export default function Explore() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={[styles.headerTitle, styles.boldText]}>BucketList</Text>
+      <Text style={[styles.headerTitle, styles.boldText]}>
+        Recommended Bucket List
+      </Text>
       <FlatList
         data={countries}
         keyExtractor={(item, index) => index.toString()}
