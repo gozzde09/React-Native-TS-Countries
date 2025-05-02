@@ -1,7 +1,7 @@
 import React from "react";
 import { Text, StyleSheet, ScrollView, View } from "react-native";
 
-export default function Add() {
+export default function Nyheter() {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.textContainer}>

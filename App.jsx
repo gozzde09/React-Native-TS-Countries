@@ -16,7 +16,7 @@ import * as Font from "expo-font";
 
 import Home from "./screens/Home";
 import Explore from "./screens/Explore";
-import Add from "./screens/Add";
+import Nyheter from "./screens/Add";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -58,7 +58,7 @@ function TabNav() {
         screenOptions={({ route }) => ({
           tabBarStyle: {
             position: "absolute",
-            backgroundColor: "#ededed",
+            backgroundColor: "#FAFAFA",
             height: 85,
           },
           tabBarIcon: ({ size, color }) => {
@@ -68,7 +68,7 @@ function TabNav() {
             } else if (route.name === "Explore") {
               iconName = "globe";
               size = 40;
-            } else if (route.name === "Add") {
+            } else if (route.name === "Nyheter") {
               iconName = "book";
             }
             return (
@@ -100,8 +100,8 @@ function TabNav() {
           options={{ headerShown: false }}
         />
         <Tab.Screen
-          name='Add'
-          component={Add}
+          name='Nyheter'
+          component={Nyheter}
           options={{ headerShown: false }}
         />
       </Tab.Navigator>
@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   exploreIconContainer: {
-    backgroundColor: "#ededed",
+    backgroundColor: "#FAFAFA",
     borderRadius: 30,
     bottom: 2,
     height: 60,
