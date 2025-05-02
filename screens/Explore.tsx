@@ -17,7 +17,7 @@ export default function Explore() {
   }, []);
 
   const renderItem = ({ item }: any) => (
-    <Card mode='outlined' style={styles.card}>
+    <Card style={styles.card}>
       <View style={styles.inner}>
         <WebView
           source={{
@@ -68,7 +68,7 @@ const commonTextStyle = {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "#fcf6f1",
     marginBottom: 24,
   },
   card: {

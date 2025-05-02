@@ -47,7 +47,7 @@ const commonTextStyle = {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#f5f5f5",
+    backgroundColor: "#fcf6f1",
     margin: 0,
   },
   imageContainer: {
