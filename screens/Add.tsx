@@ -4,11 +4,13 @@ import { Text, StyleSheet, ScrollView } from "react-native";
 export default function Add() {
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <Text style={[styles.title1, styles.commonText]}>Coming Soon!</Text>
-      <Text style={[styles.title2, styles.commonText]}>
+      <Text style={[styles.commonText, styles.title, styles.orange]}>
+        Coming Soon!
+      </Text>
+      <Text style={[styles.commonText, styles.title, styles.blue]}>
         Add, Update and Delete Your Own BucketList
       </Text>
-      <Text style={[styles.description, styles.commonText]}>
+      <Text style={[styles.commonText, styles.description]}>
         We're excited to announce that a new feature is on the way! Soon, you
         will be able to add, update and remove countries from the list. This
         will allow you to manage and customize the countries you want to
@@ -29,20 +31,24 @@ const styles = StyleSheet.create({
   },
   commonText: {
     fontFamily: "Merriweather",
+    textAlign: "center",
   },
-  title1: {
-    fontSize: 30,
-    color: "#FB8A21",
-    marginVertical: 20,
-  },
-  title2: {
+  title: {
     fontSize: 28,
-    color: "#1C2B63",
     marginVertical: 20,
+    fontWeight: "bold",
   },
-
+  orange: {
+    color: "#fb8500",
+  },
+  blue: {
+    color: "#1C2B63",
+  },
   description: {
     fontSize: 18,
     color: "#333",
+    fontWeight: "normal",
+    marginTop: 10,
+    textAlign: "left",
   },
 });

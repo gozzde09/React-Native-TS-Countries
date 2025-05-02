@@ -21,7 +21,7 @@ export default function HomeScreen() {
           />
         </View>
         <View style={styles.textContainer}>
-          <Text style={styles.title}>Discover the Fascinating World!</Text>
+          <Text style={styles.title}>Discover the World!</Text>
           <Text style={styles.description}>
             Embark on an exciting journey around the globe and learn about the
             unique countries that shape our world. From the snowy mountains of
@@ -53,10 +53,12 @@ const styles = StyleSheet.create({
   imageContainer: {
     alignItems: "center",
     marginVertical: 20,
+    borderRadius: 50,
   },
   image: {
     width: "100%",
-    height: 200,
+    height: 250,
+    borderRadius: 50,
   },
   textContainer: {
     flex: 1,
@@ -71,6 +73,7 @@ const styles = StyleSheet.create({
     color: "#1C2B63",
     textAlign: "center",
     marginBottom: 10,
+    fontWeight: "bold",
   },
   description: {
     ...commonTextStyle,

@@ -86,8 +86,8 @@ function TabNav() {
             fontSize: 18,
             fontFamily: "Merriweather",
           },
-          tabBarActiveTintColor: "#FB8A21",
-          tabBarInactiveTintColor: "#2378db",
+          tabBarActiveTintColor: "#fb8500",
+          tabBarInactiveTintColor: "#219ebc",
         })}>
         <Tab.Screen
           name='Home'

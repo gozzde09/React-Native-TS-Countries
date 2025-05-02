@@ -49,9 +49,7 @@ export default function Explore() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={[styles.headerTitle, styles.boldText]}>
-        Recommended Bucket List
-      </Text>
+      <Text style={styles.headerTitle}>Recommended Bucket List</Text>
       <FlatList
         data={countries}
         keyExtractor={(item, index) => index.toString()}
@@ -100,6 +98,7 @@ const styles = StyleSheet.create({
     fontSize: 22,
     alignSelf: "center",
     marginBottom: 4,
+    fontWeight: "bold",
   },
   headerTitle: {
     ...commonTextStyle,
@@ -107,6 +106,7 @@ const styles = StyleSheet.create({
     fontSize: 26,
     alignSelf: "center",
     marginTop: 10,
+    fontWeight: "bold",
   },
   text: {
     ...commonTextStyle,
