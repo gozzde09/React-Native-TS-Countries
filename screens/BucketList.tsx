@@ -55,7 +55,7 @@ export default function BucketList({ navigation }: any) {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.headerTitle}>Recommended Bucket List</Text>
+      <Text style={styles.headerTitle}>Bucket List</Text>
       <FlatList
         contentContainerStyle={{ paddingBottom: 100 }}
         data={countries}

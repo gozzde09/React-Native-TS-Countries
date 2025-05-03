@@ -10,7 +10,6 @@ import {
   Text,
 } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
-
 import { WebView } from "react-native-webview";
 
 export default function AboutCountry({ navigation, route }: any) {
@@ -48,18 +47,18 @@ export default function AboutCountry({ navigation, route }: any) {
             <Text style={[styles.title, styles.boldText]}>
               About {item.country_name}
             </Text>
-            <WebView
-              source={{
-                html: `
+            <Card.Content>
+              <WebView
+                source={{
+                  html: `
                 <html>
                  <body style="margin:0;padding:0">
                   <img src="${item.country_flag}" style="width:100%;height:100%;" />
                  </body>
                 </html>`,
-              }}
-              style={styles.flagContainer}
-            />
-            <Card.Content>
+                }}
+                style={styles.flagContainer}
+              />
               <Text style={styles.text}>
                 <Text style={styles.boldText}>Capital: </Text>
                 {item.country_capital}
@@ -113,6 +112,7 @@ const styles = StyleSheet.create({
     width: "100%",
     height: 200,
     alignSelf: "center",
+    marginBottom: 10,
   },
   title: {
     ...commonTextStyle,
@@ -120,7 +120,8 @@ const styles = StyleSheet.create({
     color: "#1C2B63",
     fontSize: 28,
     fontWeight: "bold",
-    marginBottom: 4,
+    marginBottom: 10,
+    marginTop: 35,
   },
   text: {
     ...commonTextStyle,
