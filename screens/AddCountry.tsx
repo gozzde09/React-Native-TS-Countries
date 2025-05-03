@@ -39,7 +39,7 @@ export default function AddCountry({ navigation }: any) {
       .then((response) => response.json())
       .then(() => {
         Alert.alert("Success", "Country added successfully!");
-        navigation.navigate("Bucket List");
+        navigation.navigate("BucketList");
       })
       .catch((error) => {
         console.error("Error adding country:", error);

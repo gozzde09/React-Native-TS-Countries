@@ -26,7 +26,7 @@ export default function AboutCountry({ navigation, route }: any) {
     })
       .then((response) => response.json())
       .then(() => {
-        navigation.navigate("Bucket List");
+        navigation.goBack();
         Alert.alert("Success", "Country deleted successfully!");
       })
       .catch((error) => {

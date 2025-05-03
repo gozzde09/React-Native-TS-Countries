@@ -6,6 +6,3 @@ export type Country = {
   country_description: string;
   country_flag: string;
 };
-export type RootStackParamList = {
-  AboutCountry: Country;
-};

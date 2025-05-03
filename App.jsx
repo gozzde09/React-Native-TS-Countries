@@ -4,12 +4,14 @@
 // SPLASH SCREEN : https://docs.expo.dev/versions/latest/sdk/splash-screen/
 // TABBAR https://reactnavigation.org/docs/customizing-tabbar/
 
+import React, { useEffect } from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer } from "@react-navigation/native";
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, View } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
+import * as SplashScreen from "expo-splash-screen";
 import * as Font from "expo-font";
 
 import AboutCountry from "./screens/AboutCountry";
@@ -18,45 +20,49 @@ import BucketList from "./screens/BucketList";
 import EditCountry from "./screens/EditCountry";
 import Home from "./screens/Home";
 
+SplashScreen.preventAutoHideAsync();
+
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
-const BucketStack = createNativeStackNavigator();
 
 export default function App() {
-  Font.useFonts({
+  const [fontsLoaded] = Font.useFonts({
     Merriweather: require("./assets/fonts/Merriweather.ttf"),
   });
+
+  useEffect(() => {
+    if (fontsLoaded) {
+      SplashScreen.hideAsync();
+    }
+  }, [fontsLoaded]);
+
+  if (!fontsLoaded) return null;
 
   return (
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name='COUNTRIFY' component={TabNav} />
+        <Stack.Screen
+          name='BucketList'
+          component={BucketList}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name='AboutCountry'
+          component={AboutCountry}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name='EditCountry'
+          component={EditCountry}
+          options={{ headerShown: false }}
+        />
       </Stack.Navigator>
       <StatusBar style='auto' />
     </NavigationContainer>
   );
 }
-function BucketListStack() {
-  return (
-    <BucketStack.Navigator>
-      <BucketStack.Screen
-        name='Bucket List'
-        component={BucketList}
-        options={{ headerShown: false }}
-      />
-      <BucketStack.Screen
-        name='AboutCountry'
-        component={AboutCountry}
-        options={{ headerShown: false }}
-      />
-      <BucketStack.Screen
-        name='EditCountry'
-        component={EditCountry}
-        options={{ headerShown: false }}
-      />
-    </BucketStack.Navigator>
-  );
-}
+
 function TabNav() {
   return (
     <>
@@ -72,7 +78,7 @@ function TabNav() {
             let iconName;
             if (route.name === "Home") {
               iconName = "home";
-            } else if (route.name === "Bucket List") {
+            } else if (route.name === "BucketList") {
               iconName = "globe";
               size = 40;
             } else if (route.name === "Add") {
@@ -82,7 +88,7 @@ function TabNav() {
               <View
                 style={[
                   styles.iconContainer,
-                  route.name === "Bucket List" && styles.exploreIconContainer,
+                  route.name === "BucketList" && styles.exploreIconContainer,
                 ]}>
                 {/* Annan stil för ikonen */}
                 <Icon name={iconName} size={size} color={color} />
@@ -102,9 +108,9 @@ function TabNav() {
           options={{ headerShown: false }}
         />
         <Tab.Screen
-          name='Bucket List'
-          component={BucketListStack}
-          options={{ headerShown: false }}
+          name='BucketList'
+          component={BucketList}
+          options={{ headerShown: false, tabBarLabel: "Bucket List" }}
         />
         <Tab.Screen
           name='Add'

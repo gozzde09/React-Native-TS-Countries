@@ -42,7 +42,7 @@ export default function EditCountry({ route, navigation }: any) {
       .then((response) => response.json())
       .then(() => {
         Alert.alert("Success", "Country updated successfully!");
-        navigation.navigate("Bucket List");
+        navigation.navigate("BucketList");
       })
       .catch((error) => {
         console.error("Error updating country:", error);
