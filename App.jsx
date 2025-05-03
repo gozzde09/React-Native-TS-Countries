@@ -42,7 +42,6 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name='COUNTRIFY' component={TabNav} />
-
         <Stack.Screen
           name='AboutCountry'
           component={AboutCountry}
@@ -62,11 +61,6 @@ const BucketStack = createNativeStackNavigator();
 function BucketListStack() {
   return (
     <BucketStack.Navigator>
-      <BucketStack.Screen
-        name='BucketList'
-        component={BucketList}
-        options={{ headerShown: false }}
-      />
       <BucketStack.Screen
         name='AboutCountry'
         component={AboutCountry}
