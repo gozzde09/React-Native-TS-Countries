@@ -39,7 +39,7 @@ function BucketListStack() {
   return (
     <BucketStack.Navigator>
       <BucketStack.Screen
-        name='BucketList'
+        name='Bucket List'
         component={BucketList}
         options={{ headerShown: false }}
       />

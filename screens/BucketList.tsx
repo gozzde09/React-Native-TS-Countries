@@ -9,16 +9,14 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import { useNavigation } from "@react-navigation/native";
-import { WebView } from "react-native-webview";
-import type { Country, RootStackParamList } from "../types";
-import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { useIsFocused } from "@react-navigation/native";
-export default function BucketList() {
-  const navigation =
-    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+import { WebView } from "react-native-webview";
+import type { Country } from "../types";
+
+export default function BucketList({ navigation }: any) {
   const [countries, setCountries] = useState<Country[]>([]);
   const isFocused = useIsFocused();
+
   useEffect(() => {
     if (isFocused) {
       fetchCountries();

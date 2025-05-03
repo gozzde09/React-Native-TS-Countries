@@ -1,17 +1,50 @@
 // https://docs.expo.dev/versions/latest/sdk/webview/
 // https://reactnative.dev/docs/safeareaview
 import { Card } from "react-native-paper";
-import { SafeAreaView, View, StyleSheet, ScrollView, Text } from "react-native";
+import {
+  Alert,
+  SafeAreaView,
+  View,
+  StyleSheet,
+  ScrollView,
+  Text,
+} from "react-native";
+import Icon from "react-native-vector-icons/FontAwesome";
+
 import { WebView } from "react-native-webview";
 
-export default function AboutCountry({ route }) {
+export default function AboutCountry({ navigation, route }: any) {
   const item = route.params;
+
+  const handleDelete = (id: string) => {
+    fetch(`https://countries-mongodb-atlas.onrender.com/countries/${id}`, {
+      method: "DELETE",
+    })
+      .then((response) => response.json())
+      .then(() => {
+        navigation.navigate("Bucket List");
+        Alert.alert("Success", "Country deleted successfully!");
+      })
+      .catch((error) => {
+        console.error("Error deleting country:", error);
+        Alert.alert("Error", "Something went wrong!");
+      });
+  };
 
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView>
         <Card style={styles.card}>
           <View style={styles.inner}>
+            <View style={styles.iconContainer}>
+              <Icon
+                name='trash'
+                color='red'
+                size={30}
+                onPress={() => handleDelete(item._id)}
+              />
+              <Icon name='edit' color='#fb8500' size={35} />
+            </View>
             <Text style={[styles.title, styles.boldText]}>
               About {item.country_name}
             </Text>
@@ -66,6 +99,14 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     padding: 16,
     gap: 10,
+  },
+  iconContainer: {
+    display: "flex",
+    flexDirection: "row",
+    gap: 10,
+    position: "absolute",
+    right: 10,
+    top: 10,
   },
   flagContainer: {
     backgroundColor: "#FAFAFA",
