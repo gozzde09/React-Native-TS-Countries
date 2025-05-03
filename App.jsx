@@ -15,6 +15,7 @@ import * as Font from "expo-font";
 import AboutCountry from "./screens/AboutCountry";
 import AddCountry from "./screens/AddCountry";
 import BucketList from "./screens/BucketList";
+import EditCountry from "./screens/EditCountry";
 import Home from "./screens/Home";
 
 const Stack = createNativeStackNavigator();
@@ -46,6 +47,11 @@ function BucketListStack() {
       <BucketStack.Screen
         name='AboutCountry'
         component={AboutCountry}
+        options={{ headerShown: false }}
+      />
+      <BucketStack.Screen
+        name='EditCountry'
+        component={EditCountry}
         options={{ headerShown: false }}
       />
     </BucketStack.Navigator>

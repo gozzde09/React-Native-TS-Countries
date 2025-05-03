@@ -1,6 +1,6 @@
 // https://docs.expo.dev/versions/latest/sdk/webview/
 // https://reactnative.dev/docs/safeareaview
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import {
   FlatList,
   SafeAreaView,
@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
     marginRight: 15,
   },
   button: {
-    backgroundColor: "#fb8500",
+    backgroundColor: "#2378db",
     borderRadius: 12,
     paddingVertical: 6,
     paddingHorizontal: 14,

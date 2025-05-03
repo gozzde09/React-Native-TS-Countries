@@ -1,49 +1,51 @@
-// Keyboard Avoiding :https://reactnative.dev/docs/keyboardavoidingview
-
 import React, { useState } from "react";
 import {
   Alert,
   ImageBackground,
+  SafeAreaView,
   ScrollView,
   StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
-  SafeAreaView,
 } from "react-native";
 
-export default function AddCountry({ navigation }: any) {
-  const [capital, setCapital] = useState("");
-  const [countryName, setCountryName] = useState("");
-  const [description, setDescription] = useState("");
-  const [flagCode, setFlagCode] = useState("");
-  const [language, setLanguage] = useState("");
+export default function EditCountry({ route, navigation }: any) {
+  const { country } = route.params;
+  const [countryName, setCountryName] = useState(country.country_name);
+  const [countryCapital, setCountryCapital] = useState(country.country_capital);
+  const [countryLanguage, setCountryLanguage] = useState(
+    country.country_language
+  );
+  const [countryDescription, setCountryDescription] = useState(
+    country.country_description
+  );
 
-  const handleAddCountry = () => {
-    const flag = `https://flagcdn.com/${flagCode.trim().toLowerCase()}.svg`;
-    const newCountry = {
-      country_capital: capital,
-      country_description: description,
-      country_flag: flag,
-      country_language: language,
+  const handleUpdateCountry = () => {
+    const updatedCountry = {
+      country_capital: countryCapital,
+      country_description: countryDescription,
+      country_language: countryLanguage,
       country_name: countryName,
     };
 
-    fetch("https://countries-mongodb-atlas.onrender.com/countries", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newCountry),
-    })
+    fetch(
+      `https://countries-mongodb-atlas.onrender.com/countries/${country._id}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updatedCountry),
+      }
+    )
       .then((response) => response.json())
       .then(() => {
-        Alert.alert("Success", "Country added successfully!");
+        Alert.alert("Success", "Country updated successfully!");
         navigation.navigate("Bucket List");
       })
       .catch((error) => {
-        console.error("Error adding country:", error);
-        Alert.alert("Error", "Something went wrong!");
+        console.error("Error updating country:", error);
       });
   };
 
@@ -54,39 +56,36 @@ export default function AddCountry({ navigation }: any) {
       resizeMode='stretch'>
       <SafeAreaView style={{ flex: 1 }}>
         <ScrollView>
-          <Text style={styles.title}>Add a country</Text>
+          <Text style={styles.title}>Edit Country</Text>
           <TextInput
             onChangeText={setCountryName}
-            placeholder='Country name'
+            placeholder='Country Name'
             style={styles.input}
             value={countryName}
           />
           <TextInput
-            onChangeText={setCapital}
+            onChangeText={setCountryCapital}
             placeholder='Capital'
             style={styles.input}
-            value={capital}
+            value={countryCapital}
           />
           <TextInput
-            onChangeText={setLanguage}
+            onChangeText={setCountryLanguage}
             placeholder='Language'
             style={styles.input}
-            value={language}
+            value={countryLanguage}
           />
           <TextInput
-            onChangeText={setDescription}
-            placeholder='Description/Note'
-            style={styles.input}
-            value={description}
+            onChangeText={setCountryDescription}
+            placeholder='Description'
+            multiline={true}
+            numberOfLines={6}
+            style={[styles.input, { minHeight: 200 }]}
+            value={countryDescription}
           />
-          <TextInput
-            onChangeText={setFlagCode}
-            placeholder="Enter the 2-letter country code (e.g., 'se' for Sweden)"
-            style={styles.input}
-            value={flagCode}
-          />
-          <TouchableOpacity style={styles.button} onPress={handleAddCountry}>
-            <Text style={styles.buttonText}>Submit</Text>
+
+          <TouchableOpacity style={styles.button} onPress={handleUpdateCountry}>
+            <Text style={styles.buttonText}>Update</Text>
           </TouchableOpacity>
         </ScrollView>
       </SafeAreaView>

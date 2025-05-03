@@ -11,9 +11,14 @@ import {
 } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { WebView } from "react-native-webview";
+import { Country } from "../types";
 
 export default function AboutCountry({ navigation, route }: any) {
   const item = route.params;
+
+  const handleEdit = (item: Country) => {
+    navigation.navigate("EditCountry", { country: item });
+  };
 
   const handleDelete = (id: string) => {
     fetch(`https://countries-mongodb-atlas.onrender.com/countries/${id}`, {
@@ -42,7 +47,12 @@ export default function AboutCountry({ navigation, route }: any) {
                 size={30}
                 onPress={() => handleDelete(item._id)}
               />
-              <Icon name='edit' color='#fb8500' size={35} />
+              <Icon
+                name='edit'
+                color='#fb8500'
+                size={35}
+                onPress={() => handleEdit(item)}
+              />
             </View>
             <Text style={[styles.title, styles.boldText]}>
               About {item.country_name}
