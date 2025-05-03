@@ -43,7 +43,7 @@ export default function AboutCountry({ navigation, route }: any) {
             <View style={styles.iconContainer}>
               <Icon
                 name='trash'
-                color='red'
+                color='#333'
                 size={30}
                 onPress={() => handleDelete(item._id)}
               />

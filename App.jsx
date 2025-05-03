@@ -42,11 +42,7 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name='COUNTRIFY' component={TabNav} />
-        <Stack.Screen
-          name='BucketList'
-          component={BucketList}
-          options={{ headerShown: false }}
-        />
+
         <Stack.Screen
           name='AboutCountry'
           component={AboutCountry}
@@ -62,7 +58,28 @@ export default function App() {
     </NavigationContainer>
   );
 }
-
+const BucketStack = createNativeStackNavigator();
+function BucketListStack() {
+  return (
+    <BucketStack.Navigator>
+      <BucketStack.Screen
+        name='BucketList'
+        component={BucketList}
+        options={{ headerShown: false }}
+      />
+      <BucketStack.Screen
+        name='AboutCountry'
+        component={AboutCountry}
+        options={{ headerShown: false }}
+      />
+      <BucketStack.Screen
+        name='EditCountry'
+        component={EditCountry}
+        options={{ headerShown: false }}
+      />
+    </BucketStack.Navigator>
+  );
+}
 function TabNav() {
   return (
     <>
@@ -109,7 +126,7 @@ function TabNav() {
         />
         <Tab.Screen
           name='BucketList'
-          component={BucketList}
+          component={BucketListStack}
           options={{ headerShown: false, tabBarLabel: "Bucket List" }}
         />
         <Tab.Screen

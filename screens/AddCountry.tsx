@@ -39,6 +39,11 @@ export default function AddCountry({ navigation }: any) {
       .then((response) => response.json())
       .then(() => {
         Alert.alert("Success", "Country added successfully!");
+        setCountryName("");
+        setCapital("");
+        setDescription("");
+        setFlagCode("");
+        setLanguage("");
         navigation.navigate("BucketList");
       })
       .catch((error) => {
