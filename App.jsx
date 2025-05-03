@@ -13,9 +13,9 @@ import Icon from "react-native-vector-icons/FontAwesome";
 import * as Font from "expo-font";
 
 import AboutCountry from "./screens/AboutCountry";
+import AddCountry from "./screens/AddCountry";
 import BucketList from "./screens/BucketList";
 import Home from "./screens/Home";
-import Nyheter from "./screens/Add";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -69,8 +69,8 @@ function TabNav() {
             } else if (route.name === "Bucket List") {
               iconName = "globe";
               size = 40;
-            } else if (route.name === "Nyheter") {
-              iconName = "book";
+            } else if (route.name === "Add Country") {
+              iconName = "plus";
             }
             return (
               <View
@@ -101,8 +101,8 @@ function TabNav() {
           options={{ headerShown: false }}
         />
         <Tab.Screen
-          name='Nyheter'
-          component={Nyheter}
+          name='Add Country'
+          component={AddCountry}
           options={{ headerShown: false }}
         />
       </Tab.Navigator>

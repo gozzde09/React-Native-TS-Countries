@@ -13,18 +13,24 @@ import { useNavigation } from "@react-navigation/native";
 import { WebView } from "react-native-webview";
 import type { Country, RootStackParamList } from "../types";
 import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
-
+import { useIsFocused } from "@react-navigation/native";
 export default function BucketList() {
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const [countries, setCountries] = useState<Country[]>([]);
-
+  const isFocused = useIsFocused();
   useEffect(() => {
+    if (isFocused) {
+      fetchCountries();
+    }
+  }, [isFocused]);
+
+  const fetchCountries = () => {
     fetch("https://countries-mongodb-atlas.onrender.com/countries")
       .then((response) => response.json())
-      .then((result) => setCountries(result))
-      .catch((error) => console.error("Fetch error:", error));
-  }, []);
+      .then((data) => setCountries(data))
+      .catch((error) => console.error("Error fetching countries:", error));
+  };
 
   const renderItem = ({ item, index }: { item: Country; index: number }) => (
     <View style={styles.rowItem}>
