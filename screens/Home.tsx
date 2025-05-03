@@ -3,16 +3,16 @@ import {
   Image,
   SafeAreaView,
   ScrollView,
-  View,
-  Text,
   StyleSheet,
+  Text,
+  View,
 } from "react-native";
 import WorldImage from "../assets/images/world.jpg";
 
 export default function HomeScreen() {
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView style={styles.container}>
+      <ScrollView>
         <View style={styles.imageContainer}>
           <Image
             source={WorldImage}
@@ -46,34 +46,32 @@ const commonTextStyle = {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: "#fcf6f1",
+    flex: 1,
     margin: 0,
   },
   imageContainer: {
     alignItems: "center",
     marginVertical: 20,
-    borderRadius: 50,
   },
   image: {
     width: "100%",
     height: 250,
-    borderRadius: 50,
   },
   textContainer: {
+    alignItems: "center",
     flex: 1,
+    justifyContent: "center",
     margin: 10,
     paddingHorizontal: 10,
-    justifyContent: "center",
-    alignItems: "center",
   },
   title: {
     ...commonTextStyle,
-    fontSize: 28,
     color: "#1C2B63",
-    textAlign: "center",
-    marginBottom: 10,
+    fontSize: 28,
     fontWeight: "bold",
+    marginBottom: 10,
+    textAlign: "center",
   },
   description: {
     ...commonTextStyle,
