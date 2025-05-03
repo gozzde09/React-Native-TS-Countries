@@ -69,7 +69,7 @@ function TabNav() {
             } else if (route.name === "Bucket List") {
               iconName = "globe";
               size = 40;
-            } else if (route.name === "Add Country") {
+            } else if (route.name === "Add") {
               iconName = "plus";
             }
             return (
@@ -101,7 +101,7 @@ function TabNav() {
           options={{ headerShown: false }}
         />
         <Tab.Screen
-          name='Add Country'
+          name='Add'
           component={AddCountry}
           options={{ headerShown: false }}
         />

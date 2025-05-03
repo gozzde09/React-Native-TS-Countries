@@ -37,11 +37,11 @@ export default function AddCountry({ navigation }: any) {
       body: JSON.stringify(newCountry),
     })
       .then((response) => response.json())
-      .then((data) => {
+      .then(() => {
         Alert.alert("Success", "Country added successfully!");
         setTimeout(() => {
           navigation.navigate("Bucket List");
-        }, 1000);
+        }, 500);
       })
       .catch((error) => {
         console.error("Error adding country:", error);
@@ -77,7 +77,7 @@ export default function AddCountry({ navigation }: any) {
           />
           <TextInput
             style={styles.input}
-            placeholder='Description'
+            placeholder='Description/Note'
             value={description}
             onChangeText={setDescription}
           />
@@ -118,7 +118,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     color: "#333",
     fontFamily: "Merriweather",
-    fontSize: 20,
+    fontSize: 18,
     height: 50,
     margin: 20,
     marginBottom: 15,
