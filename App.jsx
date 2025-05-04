@@ -62,6 +62,11 @@ function BucketListStack() {
   return (
     <BucketStack.Navigator>
       <BucketStack.Screen
+        name='BucketListMain'
+        component={BucketList}
+        options={{ headerShown: false }}
+      />
+      <BucketStack.Screen
         name='AboutCountry'
         component={AboutCountry}
         options={{ headerShown: false }}
