@@ -64,6 +64,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     margin: 10,
     paddingHorizontal: 10,
+    paddingBottom: 100,
   },
   title: {
     ...commonTextStyle,

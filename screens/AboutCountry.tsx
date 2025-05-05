@@ -43,16 +43,10 @@ export default function AboutCountry({ navigation, route }: any) {
             <View style={styles.iconContainer}>
               <Icon
                 name='trash'
-                color='#333'
                 size={30}
                 onPress={() => handleDelete(item._id)}
               />
-              <Icon
-                name='edit'
-                color='#fb8500'
-                size={35}
-                onPress={() => handleEdit(item)}
-              />
+              <Icon name='edit' size={35} onPress={() => handleEdit(item)} />
             </View>
             <Text style={[styles.title, styles.boldText]}>
               About {item.country_name}
