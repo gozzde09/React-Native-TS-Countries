@@ -105,6 +105,7 @@ const commonTextStyle = {
 };
 const styles = StyleSheet.create({
   backgroundImage: {
+    backgroundColor: "#fcf6f1",
     flex: 1,
   },
   title: {

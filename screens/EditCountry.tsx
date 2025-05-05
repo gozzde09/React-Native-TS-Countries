@@ -25,6 +25,7 @@ export default function EditCountry({ route, navigation }: any) {
     const updatedCountry = {
       country_capital: countryCapital,
       country_description: countryDescription,
+      country_flag: country.country_flag,
       country_language: countryLanguage,
       country_name: countryName,
     };
@@ -39,13 +40,17 @@ export default function EditCountry({ route, navigation }: any) {
         body: JSON.stringify(updatedCountry),
       }
     )
-      .then((response) => response.json())
-      .then(() => {
+      .then(async (response) => {
+        const data = await response.json();
+        if (!response.ok) {
+          throw new Error(data.message || "Update failed");
+        }
         Alert.alert("Success", "Country updated successfully!");
-        navigation.navigate("BucketList");
+        navigation.navigate("BucketListMain");
       })
       .catch((error) => {
         console.error("Error updating country:", error);
+        Alert.alert("Error", "Something went wrong.");
       });
   };
 
@@ -99,6 +104,7 @@ const commonTextStyle = {
 };
 const styles = StyleSheet.create({
   backgroundImage: {
+    backgroundColor: "#fcf6f1",
     flex: 1,
   },
   title: {
